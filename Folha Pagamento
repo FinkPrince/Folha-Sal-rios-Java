@@ -1,0 +1,19 @@
+public class FolhaPagar {
+
+    Holerite calcularSalario(Contratin contrato,
+                             int horasNormais, int horasExtras) {
+        Holerite h = new Holerite();
+        h.funcionario = contrato.funcionario;
+        h.valorHorasNormais = horasNormais * contrato.valorHoraNormal;
+        h.valorHorasExtras = horasExtras * contrato.valorHoraExtra;
+
+        double subtotal = h.valorHorasNormais + h.valorHorasExtras;
+
+        if (contrato.temAdicionalFilhos()) {
+            h.adicionalFilhos = subtotal * 0.10;
+        } else {
+            h.adicionalFilhos = 0;
+        }
+        return h;
+    }
+}
