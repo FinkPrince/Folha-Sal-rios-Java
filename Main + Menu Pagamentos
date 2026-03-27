@@ -1,0 +1,69 @@
+import java.util.ArrayList;
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+
+        Scanner sc = new Scanner(System.in);
+        FolhaPagar folha = new FolhaPagar();
+        ArrayList<Holerite> holerites = new ArrayList<>();
+
+        int opcao;
+        do {
+            System.out.println("\n-- Menu da Empresa =) --");
+            System.out.println("1-Adicionar funcionário");
+            System.out.println("2-Listar holerites");
+            System.out.println("3-Sair");
+            System.out.print("Escolha: ");
+            opcao = sc.nextInt();
+
+            switch (opcao) {
+                case 1:
+                    //FUNCIONÁRIO
+                    Funcionario f = new Funcionario();
+                    System.out.print("Nome: ");
+                    sc.nextLine(); // limpar buffer
+                    f.nome = sc.nextLine();
+                    System.out.print("Cargo: ");
+                    f.cargo = sc.nextLine();
+                    System.out.print("Quantidade de filhos: ");
+                    f.quantidadeFilhos = sc.nextInt();
+
+                    //CONTRATO
+                    Contratin c = new Contratin();
+                    c.funcionario = f;
+                    System.out.print("Valor hora normal: ");
+                    c.valorHoraNormal = sc.nextDouble();
+                    System.out.print("Valor hora extra: ");
+                    c.valorHoraExtra = sc.nextDouble();
+
+                    //HORAS TRABAIADAS
+                    System.out.print("Horas normais: ");
+                    int hn = sc.nextInt();
+                    System.out.print("Horas extras: ");
+                    int he = sc.nextInt();
+
+                    //CALCULA E SALVA
+                    Holerite h = folha.calcularSalario(c, hn, he);
+                    holerites.add(h);
+                    System.out.println("Funcionário adicionado!");
+                    break;
+                case 2:
+                    //HOLERITES
+                    if (holerites.isEmpty()) {
+                        System.out.println("Nenhum holerite cadastrado.");
+                    } else {
+                        for (Holerite hol : holerites) {
+                            hol.imprimir();
+                        }
+                    }
+                    break;
+                case 3:
+                    System.out.println("Encerrando Sistema");
+                    break;
+                default:
+                    System.out.println("Opção inválida!");
+            }
+        } while (opcao != 0);
+    }
+}
