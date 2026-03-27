@@ -1,0 +1,18 @@
+public class Holerite {
+    Funcionario funcionario;
+    double valorHorasNormais;
+    double valorHorasExtras;
+    double adicionalFilhos;
+
+    double calcularTotal() {
+        return valorHorasNormais + valorHorasExtras + adicionalFilhos;
+    }
+    void imprimir() {
+        System.out.println("Funcionário: " + funcionario.nome);
+        System.out.println("Cargo: " + funcionario.cargo);
+        System.out.println("Horas normais: R$ " + valorHorasNormais);
+        System.out.println("Horas extras: R$ " + valorHorasExtras);
+        System.out.println("Adicional filhos: R$ " + adicionalFilhos);
+        System.out.println("TOTAL: R$ " + calcularTotal());
+    }
+}
