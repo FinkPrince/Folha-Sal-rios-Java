@@ -1,0 +1,9 @@
+public class Funcionario {
+    String nome;
+    String cargo;
+    int quantidadeFilhos;
+
+    boolean temFilhos() {
+        return quantidadeFilhos > 0;
+    }
+}
